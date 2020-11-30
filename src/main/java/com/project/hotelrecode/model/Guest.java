@@ -1,44 +1,57 @@
 package com.project.hotelrecode.model;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "guest")
 public class Guest {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(nullable = false, unique = true)
 	private String cpf;
-	
+
 	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String password;
-	
+
 	@Column(nullable = false)
 	private String telephone;
-	
+
 	@Column(nullable = false)
 	private Date birthday;
-	
+
 	@Column(nullable = false)
 	private String profile;
-	
-	
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "guest", fetch = FetchType.LAZY)
+	private List<Accommodation> accommodations;
+
+	public List<Accommodation> getAccommodations() {
+		return accommodations;
+	}
+
+	public void setAccommodations(List<Accommodation> accommodations) {
+		this.accommodations = accommodations;
+	}
 
 	public Guest() {
 		super();
@@ -126,8 +139,5 @@ public class Guest {
 		return "Guest [id=" + id + ", name=" + name + ", cpf=" + cpf + ", email=" + email + ", password=" + password
 				+ ", telephone=" + telephone + ", birthday=" + birthday + ", profile=" + profile + "]";
 	}
-	
-	
-	
 
 }
