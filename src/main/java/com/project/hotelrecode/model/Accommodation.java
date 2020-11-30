@@ -1,7 +1,5 @@
 package com.project.hotelrecode.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +18,10 @@ public class Accommodation {
 	private Long id;
 
 	@Column(nullable = false)
-	private Date startDay;
+	private String startDay;
 
 	@Column(nullable = false)
-	private Date endDay;
+	private String endDay;
 
 	@Column(nullable = false)
 	private double valueReservation;
@@ -58,19 +56,19 @@ public class Accommodation {
 		this.id = id;
 	}
 
-	public Date getStartDay() {
+	public String getStartDay() {
 		return startDay;
 	}
 
-	public void setStartDay(Date startDay) {
+	public void setStartDay(String startDay) {
 		this.startDay = startDay;
 	}
 
-	public Date getEndDay() {
+	public String getEndDay() {
 		return endDay;
 	}
 
-	public void setEndDay(Date endDay) {
+	public void setEndDay(String endDay) {
 		this.endDay = endDay;
 	}
 
@@ -86,7 +84,7 @@ public class Accommodation {
 		super();
 	}
 
-	public Accommodation(Long id, Date startDay, Date endDay, double valueReservation) {
+	public Accommodation(Long id, String startDay, String endDay, double valueReservation) {
 		super();
 		this.id = id;
 		this.startDay = startDay;

@@ -1,6 +1,5 @@
 package com.project.hotelrecode.model;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,7 +36,7 @@ public class Guest {
 	private String telephone;
 
 	@Column(nullable = false)
-	private Date birthday;
+	private String birthday;
 
 	@Column(nullable = false)
 	private String profile;
@@ -57,7 +56,7 @@ public class Guest {
 		super();
 	}
 
-	public Guest(Long id, String name, String cpf, String email, String password, String telephone, Date birthday,
+	public Guest(Long id, String name, String cpf, String email, String password, String telephone, String birthday,
 			String profile) {
 		super();
 		this.id = id;
@@ -118,11 +117,11 @@ public class Guest {
 		this.telephone = telephone;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
