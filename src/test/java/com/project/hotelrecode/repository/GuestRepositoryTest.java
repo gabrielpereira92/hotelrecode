@@ -1,5 +1,8 @@
 package com.project.hotelrecode.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -34,7 +37,7 @@ public class GuestRepositoryTest {
 		guestRepository.save(guest);
 
 	}
-	
+
 	@Test
 	public void updateGuest() {
 		Guest guest = new Guest();
@@ -48,6 +51,37 @@ public class GuestRepositoryTest {
 		guest.setProfile("Fidelity");
 
 		guestRepository.save(guest);
-		
+
+	}
+
+	@Test
+	public void findAllGuest() {
+		List<Guest> list = guestRepository.findAll();
+
+		for (Guest guest : list) {
+			System.out.println(guest);
+
+		}
+	}
+
+	@Test
+	public void findGuestById() {
+		Long id = 1L;
+		Optional<Guest> optional = guestRepository.findById(id);
+
+		Guest guest = optional.orElse(null);
+
+		System.out.println(guest);
+
+	}
+	@Test
+	public void deleteGuestById() {
+		Long id = 1L;
+		guestRepository.deleteById(id);
+	}
+	
+	@Test
+	public void deleteAllGuest() {
+		guestRepository.deleteAll();
 	}
 }

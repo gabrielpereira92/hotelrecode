@@ -21,7 +21,7 @@ public class Hotel {
 	private Long id;
 
 	@Column(nullable = false)
-	private String nameHotel;
+	private String name;
 
 	@Column(nullable = false)
 	private String email;
@@ -60,11 +60,11 @@ public class Hotel {
 		super();
 	}
 
-	public Hotel(Long id, String nameHotel, String email, String telephone, int classification, double priceWeekRegular,
+	public Hotel(Long id, String name, String email, String telephone, int classification, double priceWeekRegular,
 			double priceWeekFidelity, double priceWeekendRegular, double priceWeekendFidelity) {
 		super();
 		this.id = id;
-		this.nameHotel = nameHotel;
+		this.name = name;
 		this.email = email;
 		this.telephone = telephone;
 		this.classification = classification;
@@ -82,12 +82,12 @@ public class Hotel {
 		this.id = id;
 	}
 
-	public String getNameHotel() {
-		return nameHotel;
+	public String getName() {
+		return name;
 	}
 
-	public void setNameHotel(String nameHotel) {
-		this.nameHotel = nameHotel;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -148,7 +148,7 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nameHotel=" + nameHotel + ", email=" + email + ", telephone=" + telephone
+		return "Hotel [id=" + id + ", name=" + name + ", email=" + email + ", telephone=" + telephone
 				+ ", classification=" + classification + ", priceWeekRegular=" + priceWeekRegular
 				+ ", priceWeekFidelity=" + priceWeekFidelity + ", priceWeekendRegular=" + priceWeekendRegular
 				+ ", priceWeekendFidelity=" + priceWeekendFidelity + "]";
