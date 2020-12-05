@@ -27,7 +27,7 @@ public class GuestRepositoryTest {
 		Guest guest = new Guest();
 		guest.setId(null);
 		guest.setName("Julianny Pereira");
-		guest.setCpf("789.789.456-15");
+		guest.setCpf("789.789.456-25");
 		guest.setEmail("julianny@gmail.com");
 		guest.setPassword("euteamo123");
 		guest.setTelephone("(81)984835973");
