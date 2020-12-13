@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.hotelrecode.model.Guest;
 import com.project.hotelrecode.service.GuestService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(path = "/guest", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GuestController {
@@ -37,6 +41,9 @@ public class GuestController {
 		return new ResponseEntity<List<Guest>>(guests, HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Get Guest by id")
+	@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message = "Bad Request"),
+			@ApiResponse(code = 404, message = "Not Found") })
 	@GetMapping(path = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Guest> findById(@PathVariable(value = "id") Long id) {
@@ -49,6 +56,8 @@ public class GuestController {
 		}
 	}
 
+	@ApiOperation(value = "Create guest")
+	@ApiResponses({ @ApiResponse(code = 201, message = "Created"), @ApiResponse(code = 400, message = "Bad Request") })
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Guest> createGuest(@RequestBody Guest guest) {
@@ -61,6 +70,9 @@ public class GuestController {
 		}
 	}
 
+	@ApiOperation(value = "Update guest")
+	@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message = "Bad Request"),
+			@ApiResponse(code = 404, message = "Not Found") })
 	@PutMapping(path = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Guest> updateGuest(@PathVariable(value = "id") Long id, @RequestBody Guest guest) {
@@ -74,6 +86,9 @@ public class GuestController {
 		}
 	}
 
+	@ApiOperation(value = "Delete guest")
+	@ApiResponses({ @ApiResponse(code = 204, message = "No Content"),
+			@ApiResponse(code = 400, message = "Bad Request") })
 	@DeleteMapping(path = "/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> deleteByIdGuest(@PathVariable(value = "id") Long id) {
@@ -81,9 +96,11 @@ public class GuestController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	@ApiOperation(value = "Delete all guest")
+	@ApiResponses({ @ApiResponse(code = 204, message = "No Content") })
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Void> deleteAllGuest(){
+	public ResponseEntity<Void> deleteAllGuest() {
 		guestService.deleteAllGuest();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
